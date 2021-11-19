@@ -26,7 +26,7 @@
     const wallet = new nearApi.WalletConnection(near, 'my-app');
 
     // connect to a NEAR smart contract
-    const contract = new nearApi.Contract(wallet.account(), 'front_end_near', {
+    const contract = new nearApi.Contract(wallet.account(), 'hello.fico.testnet', {
       viewMethods: [],
       changeMethods: ['greet']
     });
@@ -50,10 +50,10 @@
     // Either sign in or call the addMessage change method on button click
     document.getElementById('add-text').addEventListener('click', function()  {
       if (wallet.isSignedIn()) {
-        contract.greet({
+        console.log(contract.greet({
           args: { name: document.getElementById('text').value },
           //amount: nearApi.utils.format.parseNearAmount('1')
-        })
+        }))
       } else {
         wallet.requestSignIn({
           contractId: 'hello.fico.testnet',
