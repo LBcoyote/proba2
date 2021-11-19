@@ -26,7 +26,7 @@
     const wallet = new nearApi.WalletConnection(near, 'my-app');
 
     // connect to a NEAR smart contract
-    const contract = new nearApi.Contract(wallet.account(), 'guest-book.testnet', {
+    const contract = new nearApi.Contract(wallet.account(), 'front_end_near', {
       viewMethods: [],
       changeMethods: ['greet']
     });
@@ -52,7 +52,7 @@
       if (wallet.isSignedIn()) {
         contract.greet({
           args: { name: document.getElementById('text').value },
-          amount: nearApi.utils.format.parseNearAmount('1')
+          //amount: nearApi.utils.format.parseNearAmount('1')
         })
       } else {
         wallet.requestSignIn({
